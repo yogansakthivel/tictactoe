@@ -1,11 +1,12 @@
-
 <div class="container mt-5">
-  
   <div class="row">
-    
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <h1>Tic Tac Toe</h1>
-      <button *ngIf="modeSelected" type="button" class="btn btn-warning reload-button ml-10">
+      <button
+        *ngIf="modeSelected"
+        type="button"
+        class="btn btn-warning reload-button ml-10"
+      >
         <fa-icon (click)="reset()" [icon]="faRedo" size="2x"></fa-icon>
       </button>
       <div *ngIf="modeSelected">
@@ -14,85 +15,161 @@
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="!modeSelected" class="centered mt-100">
     <div class="input-group">
       <div class="radio">
         <label>
-          <input type="radio" class="radioButton" [value]="true" [(ngModel)]="singlePlayerMode" [checked]="singlePlayerMode">
+          <input
+            type="radio"
+            class="radioButton"
+            [value]="true"
+            [(ngModel)]="singlePlayerMode"
+            [checked]="singlePlayerMode"
+          />
           Single Player
         </label>
       </div>
-      
+
       <div class="radio">
         <label>
-          <input type="radio" class="radioButton" [value]="false" [(ngModel)]="singlePlayerMode" [checked]="!singlePlayerMode">
+          <input
+            type="radio"
+            class="radioButton"
+            [value]="false"
+            [(ngModel)]="singlePlayerMode"
+            [checked]="!singlePlayerMode"
+          />
           Two Player
         </label>
       </div>
     </div>
   </div>
   <div *ngIf="!modeSelected" class="mt-15 centered">
-    <button type="button" class="btn btn-large btn-block btn-primary start-button" (click)="start()">Start</button>
+    <button
+      type="button"
+      class="btn btn-large btn-block btn-primary start-button"
+      (click)="start()"
+    >
+      Start
+    </button>
   </div>
-  
-  <div *ngIf="modeSelected" class="text-center">
-    <div class="row">
-      
-      <div (click)="move('1')" class="cell text-center no-left-border no-top-border" [disableCursor]="!free.includes('1')">
+
+  <div *ngIf="modeSelected" fxLayout="row" fxFill>
+    <div class="row" fxLayout="row">
+      <div
+        (click)="move('1')"
+        class="cell text-center no-left-border no-top-border"
+        [disableCursor]="!free.includes('1')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('1')" [icon]="faTimes" size="5x"></fa-icon>
-        <fa-icon *ngIf="player2has('1')"  [icon]="faCircle" size="5x"></fa-icon>
+        <fa-icon *ngIf="player2has('1')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
-      <div (click)="move('2')" class="cell text-center no-top-border" [disableCursor]="!free.includes('2')">
+
+      <div
+        (click)="move('2')"
+        class="cell text-center no-top-border"
+        [disableCursor]="!free.includes('2')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('2')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('2')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
-      <div (click)="move('3')" class="cell text-center no-top-border no-right-border" [disableCursor]="!free.includes('3')">
+
+      <div
+        (click)="move('3')"
+        class="cell text-center no-top-border no-right-border"
+        [disableCursor]="!free.includes('3')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('3')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('3')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
     </div>
-    <div class="row">
-      
-      <div (click)="move('4')" class="cell text-center no-left-border" [disableCursor]="!free.includes('4')">
+    <div class="row" fxLayout="row">
+      <div
+        (click)="move('4')"
+        class="cell text-center no-left-border"
+        [disableCursor]="!free.includes('4')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('4')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('4')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
-      <div (click)="move('5')" class="cell text-center" [disableCursor]="!free.includes('5')">
+
+      <div
+        (click)="move('5')"
+        class="cell text-center"
+        [disableCursor]="!free.includes('5')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('5')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('5')" [icon]="faCircle" size="5x"></fa-icon>
-      </div>        
-      
-      <div (click)="move('6')" class="cell text-center no-right-border" [disableCursor]="!free.includes('6')">
+      </div>
+
+      <div
+        (click)="move('6')"
+        class="cell text-center no-right-border"
+        [disableCursor]="!free.includes('6')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('6')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('6')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
     </div>
-    <div class="row">
-      
-      <div (click)="move('7')" class="cell text-center no-left-border no-bottom-border" [disableCursor]="!free.includes('7')">
+    <div class="row" fxLayout="row">
+      <div
+        (click)="move('7')"
+        class="cell text-center no-left-border no-bottom-border"
+        [disableCursor]="!free.includes('7')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('7')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('7')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
-      <div (click)="move('8')" class="cell text-center no-bottom-border" [disableCursor]="!free.includes('8')">
+
+      <div
+        (click)="move('8')"
+        class="cell text-center no-bottom-border"
+        [disableCursor]="!free.includes('8')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('8')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('8')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
-      
-      <div (click)="move('9')" class="cell text-center no-bottom-border no-right-border" [disableCursor]="!free.includes('9')">
+
+      <div
+        (click)="move('9')"
+        class="cell text-center no-bottom-border no-right-border"
+        [disableCursor]="!free.includes('9')"
+        fxFill="33"
+      >
         <fa-icon *ngIf="player1has('9')" [icon]="faTimes" size="5x"></fa-icon>
         <fa-icon *ngIf="player2has('9')" [icon]="faCircle" size="5x"></fa-icon>
       </div>
     </div>
     <div class="row mt-50 text-center">
-      <button type="button" class="btn btn-lg btn-primary" [disabled]="moveCount > 8 || (moveCount > 0 && (moveCount % 2 > 0))">{{singlePlayerMode ? firstMove : 'Player 1'}}</button>
-      <button type="button" class="btn btn-lg btn-primary ml-20" [disabled]="moveCount > 8 || (moveCount % 2 == 0)">{{singlePlayerMode ? (firstMove === 'Computer') ? 'Player' : 'Computer' : 'Player 2'}}</button>
+      <button
+        type="button"
+        class="btn btn-lg btn-primary"
+        [disabled]="moveCount > 8 || (moveCount > 0 && moveCount % 2 > 0)"
+      >
+        {{ singlePlayerMode ? firstMove : "Player 1" }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-lg btn-primary ml-20"
+        [disabled]="moveCount > 8 || moveCount % 2 == 0"
+      >
+        {{
+          singlePlayerMode
+            ? firstMove === "Computer"
+              ? "Player"
+              : "Computer"
+            : "Player 2"
+        }}
+      </button>
     </div>
   </div>
 </div>
